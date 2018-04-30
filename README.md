@@ -1,6 +1,1 @@
-# How?
-
-`yarn`
-`yarn start`
-
-`http://localhost:8000`
+# React and Apollo Blog
