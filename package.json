@@ -1,0 +1,38 @@
+{
+  "name": "deldreth-io-2.0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-serve --port 8000",
+    "lint": "tslint --project . "
+  },
+  "devDependencies": {
+    "@types/react": "^16.3.12",
+    "@types/react-dom": "^16.0.5",
+    "@types/react-redux": "^5.0.18",
+    "@types/webpack-env": "^1.13.6",
+    "babel-runtime": "^6.26.0",
+    "css-loader": "^0.28.11",
+    "react-hot-loader": "^4.1.2",
+    "style-loader": "^0.21.0",
+    "styled-components": "^3.2.6",
+    "ts-loader": "^4.2.0",
+    "ts-node": "^6.0.1",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.3",
+    "webpack": "^4.6.0",
+    "webpack-serve": "^0.3.1"
+  },
+  "dependencies": {
+    "firebase": "^4.13.1",
+    "flexboxgrid": "^6.3.1",
+    "material-ui": "^1.0.0-beta.43",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-redux-firebase": "^2.0.6",
+    "redux": "3.7.2",
+    "redux-effex": "^1.1.2"
+  }
+}

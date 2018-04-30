@@ -1,0 +1,90 @@
+type Comment {
+	id: ID!
+	author: User!
+	message: String!
+	createdAt: String!
+	updatedAt: String!
+}
+
+type CommentConnection {
+	comments: [Comment!]!
+	nextToken: String
+}
+
+input CreateCommentInput {
+	message: String!
+}
+
+input CreatePostInput {
+	author: ID!
+	title: String
+	headline: String
+}
+
+input CreateSectionInput {
+	postId: ID!
+	type: SectionType!
+	title: String
+	subtitle: String
+	content: String!
+}
+
+type Mutation {
+	createPost(input: CreatePostInput!): Post
+	createSection(input: CreateSectionInput): Section
+	createComment(input: CreateCommentInput): Comment
+}
+
+type Post {
+	id: ID!
+	author: User!
+	title: String!
+	headline: String!
+	sections: [Section]!
+	comments(limit: Int, nextToken: String): CommentConnection
+	createdAt: String!
+	updatedAt: String!
+}
+
+type PostConnection {
+	posts: [Post!]!
+	nextToken: String
+}
+
+# scalar DateTime
+## scalar Secret
+type Query {
+	getPosts: [Post]
+	getAuthoredPosts(author: ID!): [Post]
+}
+
+type Section {
+	id: ID!
+	type: SectionType!
+	title: String
+	subtitle: String
+	content: String!
+}
+
+enum SectionType {
+	text
+	image
+	code
+	graph
+	formula
+}
+
+type User {
+	id: ID!
+	username: String!
+	password: String!
+	createdAt: String!
+	updatedAt: String!
+	posts(limit: Int, nextToken: String): PostConnection
+	comments(limit: Int, nextToken: String): CommentConnection
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}

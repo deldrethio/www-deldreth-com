@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Create a new user with a bcrypted password.
+Resources:
+  UserTable:
+    Type: "AWS::Serverless::SimpleTable"
+  CreateUser:
+    Type: 'AWS::Serverless::Function'
+    Policies: AWSLambdaDynamoDBExecutionRole
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: .
+      Events:
+        Get:
+          Type: Api
+          Properties:
+            Path: /auth
+            Method: get
+        Post:
+          Type: Api
+          Properties:
+            Path: /auth
+            Method: post
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref UserTable
+          JWT_SECRET: "Nope"
